@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import data from 'virtual:content';
 import zh from './locales/zh-CN.json';import en from './locales/en-US.json';import ja from './locales/ja-JP.json';
 import {Lounge} from './scenes/Lounge';import './styles/main.css';
-type Lang='zh-CN'|'en-US'|'ja-JP';const locales={ 'zh-CN':zh,'en-US':en,'ja-JP':ja};let lang=(localStorage.getItem('moe-lang')||(navigator.language.startsWith('ja')?'ja-JP':navigator.language.startsWith('en')?'en-US':'zh-CN')) as Lang;if(!(lang in locales))lang='zh-CN';const t=(k:keyof typeof zh)=>locales[lang][k];
+type Lang='zh-CN'|'en-US'|'ja-JP';const locales={ 'zh-CN':zh,'en-US':en,'ja-JP':ja};let lang=(localStorage.getItem('moe-lang')||'en-US') as Lang;if(!(lang in locales))lang='en-US';const t=(k:keyof typeof zh)=>locales[lang][k];
 const dev=import.meta.env.DEV;const draft=dev&&new URLSearchParams(location.search).get('draft')==='1';let paused=false,sound=localStorage.getItem('moe-sound')==='true';
 const app=document.querySelector<HTMLDivElement>('#app')!;app.innerHTML=`<header><nav>
 <select id="language"><option value="zh-CN">简体中文</option><option value="ja-JP">日本語</option><option value="en-US">English</option></select>
@@ -17,9 +17,25 @@ const $=(id:string)=>document.getElementById(id)!;
 const shown=()=>draft?data.characters:data.characters.filter((c:any)=>data.review['character-'+c.id]?.status==='approved'||!dev);
 const filtered={...data,characters:shown(),lines:draft?data.lines:data.lines.filter((x:any)=>!dev||data.review[x.id]?.status==='approved'),pairs:draft?data.pairs:data.pairs.filter((x:any)=>!dev||data.review[x.id]?.status==='approved')};
 if(!draft&&dev)filtered.characters=filtered.characters.map((c:any)=>({...c,profile:data.review['profile-'+c.id]?.status==='approved',stickers:c.stickers.filter((k:number)=>data.review[`sticker-${c.id}-${k}`]?.status==='approved'),states:c.states.filter((s:string)=>data.review[`animation-${c.id}-${s}`]?.status==='approved')}));
-const scene=new Lounge(filtered,()=>lang,draft,openProfile);scene.soundEnabled=sound;scene.special=data.config.specialEnabled;
-const game=new Phaser.Game({type:Phaser.CANVAS,parent:'stage',transparent:true,scale:{mode:Phaser.Scale.RESIZE,width:$('stage').clientWidth,height:$('stage').clientHeight},scene,render:{antialias:true},audio:{noAudio:true},fps:{target:(matchMedia('(prefers-reduced-motion: reduce)').matches||navigator.hardwareConcurrency<=4)?30:60,forceSetTimeOut:false}});
-const observer=new ResizeObserver(()=>{const el=document.getElementById('stage');if(el&&el.clientWidth&&el.clientHeight)game.scale.resize(el.clientWidth,el.clientHeight)});observer.observe($('stage'));
+const stage=$('stage');
+const pixelRatio=Math.min(window.devicePixelRatio||1, matchMedia('(pointer: coarse)').matches?3:2);
+const renderWidth=()=>Math.max(1,Math.round(stage.clientWidth*pixelRatio));
+const renderHeight=()=>Math.max(1,Math.round(stage.clientHeight*pixelRatio));
+const scene=new Lounge(filtered,()=>lang,draft,openProfile,pixelRatio);
+scene.soundEnabled=sound;
+scene.special=data.config.specialEnabled;
+const game=new Phaser.Game({
+ type:Phaser.CANVAS,parent:stage,transparent:true,
+ scale:{mode:Phaser.Scale.NONE,width:renderWidth(),height:renderHeight()},
+ scene,render:{antialias:true},audio:{noAudio:true},
+ fps:{target:(matchMedia('(prefers-reduced-motion: reduce)').matches||navigator.hardwareConcurrency<=4)?30:60,forceSetTimeOut:false},
+});
+const observer=new ResizeObserver(()=>{
+ if(stage.clientWidth&&stage.clientHeight&&(game.scale.width!==renderWidth()||game.scale.height!==renderHeight())){
+  game.scale.resize(renderWidth(),renderHeight());
+ }
+});
+observer.observe(stage);
 function text(){document.documentElement.lang=lang;$('pause').textContent=paused?'▶':'Ⅱ';$('pause').title=t(paused?'resume':'pause');$('pause').setAttribute('aria-label',t(paused?'resume':'pause'));$('sound').textContent=sound?'♪':'♩';$('sound').title=t('sound');$('sound').setAttribute('aria-label',t('sound'));$('sound').setAttribute('aria-pressed',String(sound));$('pause').setAttribute('aria-pressed',String(paused));$('help').setAttribute('aria-label',t('help'));$('language').setAttribute('aria-label',t('locale'));($('language') as HTMLSelectElement).value=lang;$('empty').textContent=shown().length?'':t('empty');}
 function modal(html:string){scene.frozen=true;$('overlay').hidden=false;$('overlay').innerHTML=`<article class="modal" role="dialog" aria-modal="true"><button class="close" id="close">${t('close')} ×</button>${html}</article>`;$('close').onclick=close;$('close').focus()}
 function close(){history.replaceState(null,'',location.pathname+location.search);$('overlay').hidden=true;$('overlay').replaceChildren();scene.frozen=paused}

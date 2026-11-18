@@ -47,8 +47,10 @@ test('dropping Claude near DeepSeek pauses both before a replayable exchange', (
  assert.equal(scene.startFriendEncounter(claude), false);
 });
 
-test('touch drag follows scaled canvas coordinates and cancellation clears the hold', () => {
+test('touch drag follows scaled high-DPI canvas coordinates and clears a cancelled hold', () => {
  const scene = make();
+ scene.pixelRatio = 3;
+ scene.scale = {width:1800,height:1200};
  const listeners = {};
  const captured = [];
  scene.game = { canvas: {

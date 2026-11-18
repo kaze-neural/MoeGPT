@@ -7,11 +7,13 @@ const actionKey=(action:Action,index:number)=>action.folder+'-action-'+index;
 type Girl={id:string;sprite:Phaser.GameObjects.Image;shadow:Phaser.GameObjects.Ellipse;x:number;y:number;tx:number;ty:number;state:State;until:number;last:number;startX:number;startY:number;moved:boolean;offsetX:number;offsetY:number;phase:number;vx?:number;vy?:number;stride?:number;walkBlend?:number;actionStarted?:number;action?:Action;actionIndex?:number;nextActionAt?:number;walkFacing?:boolean;lastWalkAt?:number};
 export class Lounge extends Phaser.Scene{
  girls:Girl[]=[];frozen=false;special=true;soundEnabled=false; reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;held?:Girl; convo?:{a:Girl;b:Girl;turns:any[];index:number;next:number;special:boolean};cooldowns=new Map<string,number>();nextSolo=0;activeBubble?:{girl:Girl;el:HTMLElement;expires:number};size=170;gameClock=0;open:(id:string)=>void;content:any;lang:()=>string;preview:boolean;audio?:AudioContext;
- constructor(data:any,lang:()=>string,preview:boolean,open:(id:string)=>void){super('lounge');this.content=data;this.lang=lang;this.preview=preview;this.open=open}
+ constructor(data:any,lang:()=>string,preview:boolean,open:(id:string)=>void,private readonly pixelRatio=1){super('lounge');this.content=data;this.lang=lang;this.preview=preview;this.open=open}
  preload(){for(const c of this.content.characters){this.load.image(c.id,`${import.meta.env.BASE_URL}art/characters/${c.id}.png?v=${import.meta.env.VITE_ART_VERSION}`);if(c.states.includes('IDLE'))this.load.image(c.id+'-blink',`${import.meta.env.BASE_URL}art/animations/blink/${c.id}.png?v=${import.meta.env.VITE_ART_VERSION}`);if(c.states.includes('ACTION'))for(const action of actions[c.id]??[]){
   action.durations.forEach((_,i)=>this.load.image(actionKey(action,i),`${import.meta.env.BASE_URL}art/animations/actions/${action.folder}/frame-${i+1}.png?v=${import.meta.env.VITE_ART_VERSION}`));
  }if(c.states.includes('WALK'))for(let i=0;i<8;i++)this.load.image(c.id+'-walk-'+i,`${import.meta.env.BASE_URL}art/animations/${c.id}-walk-drawn-v1/frame-${String(i+1).padStart(2,'0')}.png?v=${import.meta.env.VITE_ART_VERSION}`)}}
- create(){for(let i=0;i<8;i++){const key='chatgpt-walk-'+i;if(this.textures.exists(key))this.textures.get(key).add('pose',0,57,97,302,347)}this.layout();this.content.characters.forEach((c:any,i:number)=>{const w=this.scale.width,h=this.scale.height;const x=w*(i+1)/(this.content.characters.length+1),y=h*(.6+(i%2)*.14);const shadow=this.add.ellipse(x,y,this.size*.55,14,0x9783ba,.18);const sprite=this.add.image(x,y,c.id).setOrigin(.5,1);sprite.setDisplaySize(this.size*sprite.width/sprite.height,this.size);const g:Girl={id:c.id,sprite,shadow,x,y,tx:x,ty:y,state:'IDLE',until:1000+i*700,last:0,startX:0,startY:0,moved:false,offsetX:0,offsetY:0,phase:i*2};this.girls.push(g);});
+ private get worldWidth(){return this.scale.width/this.pixelRatio}
+ private get worldHeight(){return this.scale.height/this.pixelRatio}
+ create(){this.cameras.main.setOrigin(0,0).setZoom(this.pixelRatio);for(let i=0;i<8;i++){const key='chatgpt-walk-'+i;if(this.textures.exists(key))this.textures.get(key).add('pose',0,57,97,302,347)}this.layout();this.content.characters.forEach((c:any,i:number)=>{const w=this.worldWidth,h=this.worldHeight;const x=w*(i+1)/(this.content.characters.length+1),y=h*(.6+(i%2)*.14);const shadow=this.add.ellipse(x,y,this.size*.55,14,0x9783ba,.18);const sprite=this.add.image(x,y,c.id).setOrigin(.5,1);sprite.setDisplaySize(this.size*sprite.width/sprite.height,this.size);const g:Girl={id:c.id,sprite,shadow,x,y,tx:x,ty:y,state:'IDLE',until:1000+i*700,last:0,startX:0,startY:0,moved:false,offsetX:0,offsetY:0,phase:i*2};this.girls.push(g);});
  const release=()=>{const g=this.held;if(!g)return;this.held=undefined;g.state='IDLE';g.until=this.gameClock+1800;if(!g.moved){const n=performance.now();if(canDoubleTap(g.last,n,false)){g.last=0;this.open(g.id)}else{g.last=n;if(this.startAction(g)||this.showProfileHint(g))return;const line=this.content.lines.find((l:any)=>l.character===g.id);if(line)this.say(g,line.text[this.lang()])}}else{g.last=0;if(this.startFriendEncounter(g))return;const line=this.content.lines.filter((l:any)=>l.character===g.id)[4];if(line)this.say(g,line.text[this.lang()])}};
  this.bindDrag(release);
  this.scale.on('resize',()=>{this.layout();for(const g of this.girls){g.sprite.setDisplaySize(this.size*g.sprite.width/g.sprite.height,this.size);this.bound(g);g.tx=g.x;g.ty=g.y;g.state='IDLE'}});this.resolveSpacing();this.nextSolo=4000;
@@ -22,8 +24,8 @@ export class Lounge extends Phaser.Scene{
   const position=(event:PointerEvent)=>{
    const rect=canvas.getBoundingClientRect();
    return {
-    x:(event.clientX-rect.left)*this.scale.width/rect.width,
-    y:(event.clientY-rect.top)*this.scale.height/rect.height
+    x:(event.clientX-rect.left)*this.worldWidth/rect.width,
+    y:(event.clientY-rect.top)*this.worldHeight/rect.height
    };
   };
   const down=(event:PointerEvent)=>{
@@ -69,11 +71,11 @@ export class Lounge extends Phaser.Scene{
    for(const [name,callback] of Object.entries(listeners))canvas.removeEventListener(name as keyof typeof listeners,callback);
   });
  }
- layout(){this.size=Math.min(190,Math.max(76,this.scale.width/5.2),this.scale.height*.26)}
- resolveSpacing(){const offset=this.size/2-7.5;const bodies=this.girls.map(g=>({x:g.x,y:g.y-offset,halfWidth:5,height:15}));separate(bodies,this.scale.width,this.scale.height,this.held?this.girls.indexOf(this.held):-1);this.girls.forEach((g,i)=>{const b=bodies[i],y=b.y+offset;if(Math.hypot(g.x-b.x,g.y-y)>.5&&g!==this.held){g.tx=b.x;g.ty=y;g.state='IDLE';g.until=this.gameClock+500;g.vx=g.vy=0}g.x=b.x;g.y=y;this.bound(g)})}
+ layout(){this.size=Math.min(190,Math.max(76,this.worldWidth/5.2),this.worldHeight*.26)}
+ resolveSpacing(){const offset=this.size/2-7.5;const bodies=this.girls.map(g=>({x:g.x,y:g.y-offset,halfWidth:5,height:15}));separate(bodies,this.worldWidth,this.worldHeight,this.held?this.girls.indexOf(this.held):-1);this.girls.forEach((g,i)=>{const b=bodies[i],y=b.y+offset;if(Math.hypot(g.x-b.x,g.y-y)>.5&&g!==this.held){g.tx=b.x;g.ty=y;g.state='IDLE';g.until=this.gameClock+500;g.vx=g.vy=0}g.x=b.x;g.y=y;this.bound(g)})}
 
  allowed(g:Girl,s:State){return this.preview||this.content.characters.find((c:any)=>c.id===g.id)?.states.includes(s)}
- bound(g:Girl){const half=g.sprite.displayWidth/2+6;g.x=clamp(g.x,half,this.scale.width-half);g.y=clamp(g.y,this.size+65,this.scale.height-20)}
+ bound(g:Girl){const half=g.sprite.displayWidth/2+6;g.x=clamp(g.x,half,this.worldWidth-half);g.y=clamp(g.y,this.size+65,this.worldHeight-20)}
  showProfileHint(g:Girl){
   const key='moegpt-profile-hint';
   if(localStorage.getItem(key))return false;
@@ -131,8 +133,8 @@ export class Lounge extends Phaser.Scene{
   if(t>=nextActionAt&&g.state==='IDLE'&&!this.held)this.startAction(g);
   if(g.state==='IDLE'&&t>g.until&&this.allowed(g,'WALK')){
    const angle=Math.random()*Math.PI*2,dist=90+Math.random()*200;
-   g.tx=clamp(g.x+Math.cos(angle)*dist,g.sprite.displayWidth/2+14,this.scale.width-g.sprite.displayWidth/2-14);
-   g.ty=clamp(g.y+Math.sin(angle)*dist*.55,this.size+84,this.scale.height-28);g.state='WALK';
+   g.tx=clamp(g.x+Math.cos(angle)*dist,g.sprite.displayWidth/2+14,this.worldWidth-g.sprite.displayWidth/2-14);
+   g.ty=clamp(g.y+Math.sin(angle)*dist*.55,this.size+84,this.worldHeight-28);g.state='WALK';
   }
   const dx=g.tx-g.x,dy=g.ty-g.y,d=Math.hypot(dx,dy),walking=g.state==='WALK'&&d>3;
   const speed=walking?Math.min(43+g.phase,Math.sqrt(d*95)):0;
@@ -179,6 +181,6 @@ export class Lounge extends Phaser.Scene{
  if(this.convo&&t>=this.convo.next){const c=this.convo,turn=c.turns[c.index++];if(turn){const g=turn.character===c.a.id?c.a:c.b;this.say(g,turn.text[this.lang()],c.special);c.next=t+3600}else this.cancel()}
  if(!this.convo&&!this.held&&!this.activeBubble){outer:for(let i=0;i<this.girls.length;i++)for(let j=i+1;j<this.girls.length;j++){const a=this.girls[i],b=this.girls[j],key=[a.id,b.id].sort().join(':');if(a.state==='ACTION'||b.state==='ACTION'||t<(this.cooldowns.get(key)||0)||Math.hypot(a.x-b.x,a.y-b.y)>this.content.config.encounterDistance||!this.allowed(a,'INTERACT')||!this.allowed(b,'INTERACT'))continue;this.cooldowns.set(key,t+this.content.config.pairCooldown);if(Math.random()>.6)continue;const pool=this.content.pairs.filter((p:any)=>p.characters.includes(a.id)&&p.characters.includes(b.id)&&(!p.special||this.special));const special=pool.filter((p:any)=>p.special);const ordinary=pool.filter((p:any)=>!p.special);const selected=special.length&&Math.random()<.3?special:ordinary;if(!selected.length)continue;const p=selected[Math.floor(Math.random()*selected.length)];this.beginEncounter(a,b,p);break outer}}
  if(t>this.nextSolo&&!this.convo&&!this.held&&!this.activeBubble){this.nextSolo=t+6500+Math.random()*7000;const g=Phaser.Utils.Array.GetRandom(this.girls) as Girl|undefined;if(g&&g.state!=='ACTION'&&this.allowed(g,'TALK')){const ls=this.content.lines.filter((l:any)=>l.character===g.id);if(ls.length)this.say(g,ls[Math.floor(Math.random()*ls.length)].text[this.lang()])}}
- const b=this.activeBubble;if(b){if(t>b.expires){b.el.remove();if(b.girl.state==='TALK'){b.girl.state='IDLE';b.girl.until=t+1200}this.activeBubble=undefined}else{b.el.style.left=clamp(b.girl.x,100,this.scale.width-100)+'px';b.el.style.top=Math.max(4,b.girl.y-this.size-65)+'px'}}
+ const b=this.activeBubble;if(b){if(t>b.expires){b.el.remove();if(b.girl.state==='TALK'){b.girl.state='IDLE';b.girl.until=t+1200}this.activeBubble=undefined}else{b.el.style.left=clamp(b.girl.x,100,this.worldWidth-100)+'px';b.el.style.top=Math.max(4,b.girl.y-this.size-65)+'px'}}
  }
 }
