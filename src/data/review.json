@@ -600,16 +600,16 @@
     "note": "Enabled in the public demo."
   },
   "special-0": {
-    "status": "draft",
-    "note": ""
+    "status": "approved",
+    "note": "Enabled in the public demo."
   },
   "special-1": {
-    "status": "draft",
-    "note": ""
+    "status": "approved",
+    "note": "Enabled in the public demo."
   },
   "special-2": {
-    "status": "draft",
-    "note": ""
+    "status": "approved",
+    "note": "Enabled in the public demo."
   },
   "animation-chatgpt-ACTION": {
     "status": "approved",
