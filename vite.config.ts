@@ -1,7 +1,22 @@
 import { defineConfig } from 'vite';
 import fs from 'node:fs';
 import path from 'node:path';
-export default defineConfig(({command})=>({base:'./',cacheDir:'.cache/vite',plugins:[{
+import { createHash } from 'node:crypto';
+
+function artworkVersion() {
+ const hash = createHash('sha256');
+ const files = fs.readdirSync('assets', { recursive: true, encoding: 'utf8' })
+  .filter(file => file.endsWith('.png'))
+  .map(file => file.split(path.sep).join('/'))
+  .sort();
+ for (const file of files) {
+  hash.update(file);
+  hash.update(fs.readFileSync(path.join('assets', file)));
+ }
+ return hash.digest('hex').slice(0, 12);
+}
+
+export default defineConfig(({command})=>({base:'./',cacheDir:'.cache/vite',define:{'import.meta.env.VITE_ART_VERSION':JSON.stringify(command==='build'?artworkVersion():'dev')},plugins:[{
  name:'moe-reviewed-content',resolveId(id){if(id==='virtual:content')return '\0content'},
  load(id){if(id!=='\0content')return;const read=(p:string)=>JSON.parse(fs.readFileSync('src/data/'+p+'.json','utf8'));const review=read('review');const ok=(id:string)=>command==='serve'||review[id]?.status==='approved';const chars=read('characters').filter((c:any)=>ok('character-'+c.id)).map((c:any)=>({...((ok('profile-'+c.id))?c:{id:c.id,name:c.name,ja:c.ja,color:c.color}),profile:ok('profile-'+c.id),states:['IDLE','WALK','DRAG','TALK','INTERACT','ACTION'].filter(s=>ok('animation-'+c.id+'-'+s)),stickers:ok('profile-'+c.id)?[0,1,2,3].filter(k=>ok('sticker-'+c.id+'-'+k)):[]}));const d=read('dialogues');return 'export default '+JSON.stringify({characters:chars,lines:d.lines.filter((x:any)=>ok(x.id)),pairs:d.pairs.filter((x:any)=>ok(x.id)),review:command==='serve'?review:{},config:read('config')})},
  configureServer(server){server.middlewares.use(async(req,res,next)=>{if(req.url?.startsWith('/art/')){const rel=decodeURIComponent(req.url.slice(5).split('?')[0]);const file=path.resolve('assets',rel);if(!file.startsWith(path.resolve('assets')+path.sep)||!fs.existsSync(file)){res.statusCode=404;res.end();return}res.setHeader('Content-Type','image/png');fs.createReadStream(file).pipe(res);return}next()})}
