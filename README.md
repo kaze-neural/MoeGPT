@@ -2,7 +2,7 @@
 
 A small browser lounge for AI-inspired desktop pets. An unofficial fan project.
 
-The public edition ships original placeholder sprites. Character illustrations, reference images and derivatives from the private prototype are excluded.
+[Play the public demo](https://kaze-neural.github.io/MoeGPT/). The repository includes the character illustrations, animation frames and stickers used in the demo.
 
 ## Run locally
 
@@ -30,4 +30,4 @@ The static output is in `dist/`.
 - Phaser movement and interactions live in `src/scenes/Lounge.ts`.
 - When sharing new art, include its license and keep draft content marked as draft until reviewed.
 
-Code and included original placeholder sprites are released under the MIT License. Product and company names identify their respective owners. This project is not affiliated with those companies.
+The source code is released under the MIT License. The included fan art is publicly available to view and download. Product and company names identify their respective owners. This project is not affiliated with those companies.
