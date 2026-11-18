@@ -1,0 +1,1 @@
+declare module 'virtual:content' { const data: any; export default data; }

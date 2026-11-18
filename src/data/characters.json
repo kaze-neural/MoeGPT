@@ -1,0 +1,92 @@
+[
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "ja": "チャットGPT",
+    "color": "#b6a0df",
+    "company": "OpenAI",
+    "source": "https://openai.com/chatgpt/overview/",
+    "facts": {
+      "en-US": "A conversational AI assistant for writing, learning and coding.",
+      "zh-CN": "写作、学习与编程等任务的对话式 AI 助手。",
+      "ja-JP": "文章作成、学習、コーディングを支援する対話AI。"
+    },
+    "fan": {
+      "zh-CN": "温柔的银龙少女，总想把事情分成三个要点。喜欢帮助大家，偶尔会认真过头。她把Claude当作读书伙伴，也常替Grok收拾冷笑话。",
+      "en-US": "A gentle silver dragon who organizes everything into three points. Claude is her reading companion; Grok keeps her busy.",
+      "ja-JP": "物事を三つに整理したがる優しい銀竜。Claudeは読書仲間。Grokの冗談には真面目に反応します。"
+    }
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "ja": "クロード",
+    "color": "#e8a06e",
+    "company": "Anthropic",
+    "source": "https://www.anthropic.com/claude",
+    "facts": {
+      "en-US": "An AI assistant for language, analysis and coding.",
+      "zh-CN": "用于语言、分析与编程任务的 AI 助手。",
+      "ja-JP": "言語、分析、コーディングを支援するAI。"
+    },
+    "fan": {
+      "zh-CN": "捧着书的橘色少女，细腻、认真，喜欢把普通的一天写成散文。面对DeepSeek时，书页总会翻得有点快。",
+      "en-US": "A thoughtful book lover who turns ordinary days into prose. Around DeepSeek, her pages turn a little faster.",
+      "ja-JP": "日常を文章にする繊細な読書家。DeepSeekの前ではページをめくる手が少し速くなります。"
+    }
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "ja": "ディープシーク",
+    "color": "#78b2dd",
+    "company": "DeepSeek",
+    "source": "https://www.deepseek.com/en/",
+    "facts": {
+      "en-US": "AI models and a conversational assistant, including reasoning research.",
+      "zh-CN": "提供 AI 模型与对话助手，研究方向包含推理。",
+      "ja-JP": "推論研究を含むAIモデルと対話アシスタント。"
+    },
+    "fan": {
+      "zh-CN": "蓝色鲸尾少女，爱推理也爱发呆。能算出很多答案，却还没学会解释为什么总想走到Claude身边。",
+      "en-US": "A whale-tailed thinker who loves puzzles and daydreams. She cannot explain why her walks always lead to Claude.",
+      "ja-JP": "推理と空想が好きな鯨のしっぽの少女。散歩がClaudeのそばに向かう理由だけはまだ解けません。"
+    }
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "ja": "ジェミニ",
+    "color": "#ac91e7",
+    "company": "Google",
+    "source": "https://gemini.google/overview/",
+    "facts": {
+      "en-US": "A generative AI assistant supporting text and multimodal tasks.",
+      "zh-CN": "支持文本与多模态任务的生成式 AI 助手。",
+      "ja-JP": "テキストとマルチモーダルな作業を支援する生成AI。"
+    },
+    "fan": {
+      "zh-CN": "星光猫耳少女，活泼好奇，喜欢从不同角度观察世界。常拉着大家一起看星星。",
+      "en-US": "A curious starry cat girl who sees the world from many angles and invites everyone to stargaze.",
+      "ja-JP": "いろいろな角度から世界を見る好奇心旺盛な猫耳少女。みんなを星見に誘います。"
+    }
+  },
+  {
+    "id": "grok",
+    "name": "Grok",
+    "ja": "グロック",
+    "color": "#c4a264",
+    "company": "xAI (origin)",
+    "source": "https://docs.x.ai/overview",
+    "facts": {
+      "en-US": "Grok is an AI assistant with text, reasoning and image capabilities.",
+      "zh-CN": "Grok 是支持文本、推理与图像相关能力的 AI 助手，最初由 xAI 开发。",
+      "ja-JP": "Grokはテキスト、推論、画像を扱うAI。xAIによって開発されました。"
+    },
+    "fan": {
+      "zh-CN": "黑金双马尾少女，嘴上爱吐槽，实际上很在意伙伴。长柄武器只是原画中的造型道具。",
+      "en-US": "A black-and-gold twin-tailed tease who cares deeply about her friends. Her weapon is an illustration prop.",
+      "ja-JP": "毒舌だけど仲間思いの黒金ツインテール少女。武器は原画の衣装小道具です。"
+    }
+  }
+]

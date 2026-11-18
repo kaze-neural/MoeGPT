@@ -1,0 +1,634 @@
+{
+  "character-chatgpt": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "profile-chatgpt": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-chatgpt-IDLE": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-chatgpt-WALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-chatgpt-DRAG": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-chatgpt-TALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-chatgpt-INTERACT": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-chatgpt-0": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-chatgpt-1": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-chatgpt-2": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-chatgpt-3": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "character-claude": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "profile-claude": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-IDLE": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-WALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-DRAG": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-TALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-INTERACT": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-claude-0": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-claude-1": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-claude-2": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-claude-3": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "character-deepseek": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "profile-deepseek": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-IDLE": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-WALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-DRAG": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-TALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-INTERACT": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-deepseek-0": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-deepseek-1": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-deepseek-2": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-deepseek-3": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "character-gemini": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "profile-gemini": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-IDLE": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-WALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-DRAG": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-TALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-INTERACT": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-gemini-0": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-gemini-1": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-gemini-2": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-gemini-3": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "character-grok": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "profile-grok": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-IDLE": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-WALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-DRAG": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-TALK": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-INTERACT": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-grok-0": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-grok-1": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-grok-2": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "sticker-grok-3": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "line-chatgpt-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-3": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-4": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-5": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-6": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-7": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-8": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-9": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-10": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-11": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-12": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-13": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-chatgpt-14": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-3": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-4": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-5": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-6": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-7": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-8": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-9": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-10": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-11": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-12": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-13": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-claude-14": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-3": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-4": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-5": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-6": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-7": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-8": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-9": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-10": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-11": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-12": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-13": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-deepseek-14": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-3": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-4": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-5": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-6": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-7": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-8": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-9": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-10": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-11": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-12": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-13": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-gemini-14": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-3": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-4": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-5": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-6": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-7": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-8": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-9": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-10": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-11": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-12": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-13": {
+    "status": "draft",
+    "note": ""
+  },
+  "line-grok-14": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-claude-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-claude-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-deepseek-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-deepseek-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-gemini-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-gemini-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-grok-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-chatgpt-grok-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-deepseek-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-deepseek-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-gemini-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-gemini-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-grok-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-claude-grok-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-deepseek-gemini-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-deepseek-gemini-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-deepseek-grok-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-deepseek-grok-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-gemini-grok-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "pair-gemini-grok-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "special-0": {
+    "status": "draft",
+    "note": ""
+  },
+  "special-1": {
+    "status": "draft",
+    "note": ""
+  },
+  "special-2": {
+    "status": "draft",
+    "note": ""
+  },
+  "animation-chatgpt-ACTION": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-claude-ACTION": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-gemini-ACTION": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-grok-ACTION": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  },
+  "animation-deepseek-ACTION": {
+    "status": "approved",
+    "note": "Open-source demo with original placeholder sprites."
+  }
+}

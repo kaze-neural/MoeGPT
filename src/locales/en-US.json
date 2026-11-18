@@ -1,0 +1,19 @@
+{
+  "pause": "Pause",
+  "resume": "Resume",
+  "sound": "Sound",
+  "help": "Help",
+  "back": "Back to lounge",
+  "bio": "Character journal",
+  "facts": "AI product background",
+  "fan": "Unofficial fan character",
+  "stickers": "Sticker journal",
+  "download": "Download",
+  "empty": "Content is awaiting review.",
+  "disclaimer": "Unofficial fan work · No affiliation with the AI brands",
+  "close": "Close",
+  "helpText": "Hold and drag a character. Release to resume wandering. Double tap for her profile. Space pauses; Esc returns. Sound starts muted.",
+  "first": "Welcome to their little universe",
+  "locale": "Language",
+  "notice": "Temporary caption stickers preserving the original art; facial expressions have not been redrawn."
+}
